@@ -3,6 +3,9 @@ title: "wemby"
 date: 6/15
 format: html
 ---
+```{r}
+source("../scripts/NBA_synergy_copy.R")
+```
 
 Joseph Settimi aka @wosephcantmiss on tiktok
 
@@ -13,4 +16,8 @@ I am going to vow not to bring up defense in this entire write-up, he is uncompe
 
 I wanted to be able to visualize this in hopes of letting the game script confirm what I believed to be true: he doesn't hunt shots at the speed and game flow (not the frequency, those numbers check out) of regular offensive superstars. Below is a plot of games 1 and 2 plotted by the Spurs lead (negative for losing, inspired by The Diff™).
 
-HHHHHH
+```{r}
+plot_player_shots('Victor Wembanyama', 'SAS', 'NYK', 2026)
+```
+
+
