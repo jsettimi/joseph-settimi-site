@@ -1,71 +1,144 @@
-/* css styles */
-/*-- scss:defaults --*/
-$theme: "cosmo" !default;
+/* ---------------------------------------------
+   Index / homepage styles
+   Save as styles.css and reference from index.qmd
+   front matter:
+     css: styles.css
+---------------------------------------------- */
 
-$body-bg: #ffffff;
-$body-color: #1f2328;
-$link-color: #2563eb;
-
-$font-family-sans-serif: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-$font-family-monospace: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
-
-$navbar-bg: #ffffff;
-$navbar-fg: #1f2328;
-
-$presentation-heading-font: "Inter", sans-serif;
-
-/*-- scss:rules --*/
+/* Warm off-white background — not stark/clinical white */
 body {
-  line-height: 1.7;
+  background-color: #faf9f6;
 }
 
-.navbar {
-  border-bottom: 1px solid #eaecef;
-  box-shadow: none;
-}
-
-.navbar-title {
-  font-weight: 700;
-  letter-spacing: -0.01em;
-}
-
-h1, h2, h3 {
-  font-weight: 700;
-  letter-spacing: -0.015em;
+/* Bold navy for titles + emphasis */
+h1, h2, h3, h4,
+.navbar-title,
+strong {
+  color: #1b2a4a;
 }
 
 h1.title {
-  font-size: 2.6rem;
-  margin-bottom: 0.25em;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  font-size: 2.8rem;
+  line-height: 1.1;
 }
 
+/* Hero section at top of homepage */
+.quarto-title-banner {
+  background: linear-gradient(160deg, #f0ece1 0%, #faf9f6 60%);
+  padding: 4rem 0 2.5rem 0;
+  border-bottom: 1px solid #ece7da;
+}
+
+/* Optional intro/tagline text under the name */
+.hero-subtitle,
+.quarto-title-block .description {
+  color: #4a5266;
+  font-size: 1.25rem;
+  font-weight: 400;
+  margin-top: 0.5rem;
+  max-width: 540px;
+}
+
+/* Small gold accent rule under the main title — adds warmth without noise */
+.quarto-title-banner h1.title::after {
+  content: "";
+  display: block;
+  width: 56px;
+  height: 4px;
+  background: #c08a3e;
+  border-radius: 2px;
+  margin-top: 1rem;
+}
+
+/* Body text */
 main.content {
   max-width: 760px;
   margin: 0 auto;
-  padding-top: 2rem;
+  color: #2a2f3a;
 }
 
-a {
-  text-decoration: none;
+.content p {
+  font-size: 1.08rem;
+  line-height: 1.75;
 }
-a:hover {
+
+/* Links — navy with gold hover, ties the palette together */
+.content a {
+  color: #1b2a4a;
   text-decoration: underline;
+  text-decoration-color: rgba(27, 42, 74, 0.3);
+  text-underline-offset: 2px;
+  font-weight: 600;
+}
+.content a:hover {
+  color: #c08a3e;
+  text-decoration-color: #c08a3e;
 }
 
-.quarto-title-banner {
-  background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
-  padding-top: 3rem;
-  padding-bottom: 1.5rem;
+/* "Cards" for highlighting featured posts/projects on the homepage —
+   use a div with class="home-card" around content in your .qmd */
+.home-card {
+  background: #ffffff;
+  border: 1px solid #ece7da;
+  border-radius: 12px;
+  padding: 1.5rem 1.75rem;
+  margin: 1.25rem 0;
+  box-shadow: 0 4px 16px rgba(27, 42, 74, 0.06);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+.home-card:hover {
+  box-shadow: 0 8px 24px rgba(27, 42, 74, 0.1);
+  transform: translateY(-2px);
+}
+.home-card h3 {
+  margin-top: 0;
 }
 
-pre.sourceCode {
-  border-radius: 6px;
+/* Section dividers — subtle, warm, not a harsh black line */
+.content hr {
+  border: none;
+  border-top: 1px solid #ece7da;
+  margin: 3rem 0;
 }
 
-footer.footer {
-  border-top: 1px solid #eaecef;
+/* Buttons / CTA links, e.g. "View my work" — add class="btn-navy" to a link */
+.btn-navy {
+  display: inline-block;
+  background: #1b2a4a;
+  color: #faf9f6 !important;
+  font-weight: 600;
+  padding: 0.6rem 1.4rem;
+  border-radius: 8px;
+  text-decoration: none !important;
+  margin-top: 1rem;
+  transition: background 0.2s ease;
+}
+.btn-navy:hover {
+  background: #c08a3e;
+}
+
+/* Pull-quote / intro statement styling */
+.lead-statement {
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #1b2a4a;
+  line-height: 1.5;
+  margin: 1.5rem 0;
+}
+
+/* Images on the homepage (headshot, etc.) */
+.content img {
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(27, 42, 74, 0.08);
+}
+
+/* Footer consistency */
+.footer {
+  background: #f0ece1;
+  border-top: 1px solid #ece7da;
+  color: #5a5f6b;
   margin-top: 4rem;
-  padding-top: 1.5rem;
-  color: #6b7280;
-  font-size: 0.9rem;
+  padding: 1.5rem 0;
 }
