@@ -2,6 +2,7 @@
 title: "wemby"
 date: 6/15
 format: html
+image: ./images/wemby_AG.png
 ---
 
 ```{r, include=FALSE}

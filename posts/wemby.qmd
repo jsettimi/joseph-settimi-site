@@ -2,6 +2,9 @@
 title: "wemby"
 date: 6/15
 format: html
+image: ./images/wemby_AG.png
+---
+
 ---
 
 ```{r, include=FALSE}
@@ -53,7 +56,7 @@ With virtually every conceivable move or method of scoring at his disposal, when
 
 Many comparisons have oxymoronically been thrown around by people talking about someone they also call ‘The Alien,’ Dirk, KD, Skinny AD (my favorite comp), maybe aptly Tim Duncan. The problem is that his shot diet isn't that close to any of them.
 
-*Through cosine similarity – which I wont explain in depth, just know it scores the similarities between vectors with 100 being a perfect match – I was able to match up the proportions at which selected players score (via the NBAs in depth scoring breakdown stats with data back to 2013) to Wemby. The 6 types of scoring being **drives, catch n shoot, pull ups, post, paint** and **elbow touches**. To be clear this is not measuring quality, just scoring method.*
+*Through cosine similarity – which I wont explain in depth, just know it scores the similarities between vectors with 100 being a perfect match – I was able to match up the proportions at which selected players score (via the [NBAs in depth scoring breakdown](https://www.nba.com/stats/players/drives?Season=2024-25&SeasonType=Regular+Season) stats with data back to 2013) to Wemby. The 6 types of scoring being **drives, catch n shoot, pull ups, post, paint** and **elbow touches**. To be clear this is not measuring quality, just scoring method.*
 
 This is Wemby compared to some of these players as well as some all time elite scorers, albeit some past their primes. I tried to put many players in the years they played their first finals (just like our guy). Based on my understanding and tooling around with this function, anything below an 85 is not all that similar.
 

@@ -1,8 +1,7 @@
-------------------------------------------------------------------------
-
 ---
 title: "Dusty May"
 date: 2026-06-26
+image: ./images/morez.png
 ---
 
 # The Dusty May Moratorium
