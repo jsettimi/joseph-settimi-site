@@ -1,26 +1,26 @@
 {
-    "id": "F89DB94F",
-    "path": "~/Desktop/site/styles.css",
-    "project_path": "styles.css",
-    "type": "css",
+    "id": "D4BE9DF4",
+    "path": "~/Desktop/NBA_synergy.R",
+    "project_path": null,
+    "type": "r_source",
     "hash": "0",
     "contents": "",
     "dirty": false,
-    "created": 1782451169950.0,
+    "created": 1782492196496.0,
     "source_on_save": false,
-    "relative_order": 5,
+    "relative_order": 6,
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "16,20",
-        "scrollLine": "0"
+        "cursorPosition": "434,26",
+        "scrollLine": "418"
     },
     "folds": "",
-    "lastKnownWriteTime": 1782451185,
+    "lastKnownWriteTime": 1782358784,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1782451185668,
+    "last_content_update": 1782358784,
     "read_only": false,
     "read_only_alternatives": []
 }

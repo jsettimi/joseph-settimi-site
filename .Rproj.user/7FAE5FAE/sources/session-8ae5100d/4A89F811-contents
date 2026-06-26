@@ -392,8 +392,8 @@ plot_player_shots <- function(target_player,
     
     matchups <- sched %>%
       dplyr::filter(
-        (stringr::str_detect()(home_display_name, target_team) | stringr::str_detect()(away_display_name, target_team)),
-        (stringr::str_detect()(home_display_name, opposing_team) | stringr::str_detect()(away_display_name, opposing_team))
+        (stringr::str_detect(home_display_name, target_team) | stringr::str_detect(away_display_name, target_team)),
+        (stringr::str_detect(home_display_name, opposing_team) | stringr::str_detect(away_display_name, opposing_team))
       ) %>%
       dplyr::mutate(
         label = paste0(away_display_name, " @ ", home_display_name,
@@ -413,15 +413,15 @@ plot_player_shots <- function(target_player,
   # ---------------------------------------------------------
   # 2. game_id supplied -> build the chart
   # ---------------------------------------------------------
-  pbp_all <- hoopR::load_nba_pbp(seasons = game_year)
-  pbp <- subset(pbp_all, game_id == game_id)
+  #pbp_all <- hoopR::load_nba_pbp(seasons = game_year) game_id == as.integer(.env$game_id)
+  pbp <- hoopR::load_nba_pbp(seasons = game_year) %>% filter(game_id == as.integer(.env$game_id))
   
   if (!('points_attempted' %in% colnames(pbp))) {
     pbp <- pbp %>% dplyr::mutate(
       points_attempted = case_when(
-        stringr::str_detect()(text, regex("Free Throw", ignore_case = TRUE)) ~ 1L,
-        stringr::str_detect()(text, regex("Three Point|Three Pointer", ignore_case = TRUE)) ~ 3L,
-        stringr::str_detect()(text, regex("Jumper|Shot|Layup|Dunk|Hook Shot|Tip Shot|Running Jumper", ignore_case = TRUE)) ~ 2L,
+        stringr::str_detect(text, regex("Free Throw", ignore_case = TRUE)) ~ 1L,
+        stringr::str_detect(text, regex("Three Point|Three Pointer", ignore_case = TRUE)) ~ 3L,
+        stringr::str_detect(text, regex("Jumper|Shot|Layup|Dunk|Hook Shot|Tip Shot|Running Jumper", ignore_case = TRUE)) ~ 2L,
         TRUE ~ NA_integer_
       )
     )
@@ -439,7 +439,7 @@ plot_player_shots <- function(target_player,
     dplyr::filter(game_id == .env$game_id) %>%
     slice(1)
   
-  target_is_home <- stringr::str_detect()(game_meta$home_display_name, target_team)
+  target_is_home <- stringr::str_detect(game_meta$home_display_name, target_team)
   
   game_o <- pbp %>%
     dplyr::mutate(
@@ -472,9 +472,54 @@ plot_player_shots <- function(target_player,
   # ---------------------------------------------------------
   game_date_lbl <- as.Date(game_meta$game_date)
   
-  plot_title <- paste0(target_team, " shots vs ", opposing_team,
-                       " (", game_year, ") with ", target_player, " highlighted")
-  plot_subtitle <- paste0("Negative means losing | ", game_date_lbl)
+  if (game_meta$season_type == 3) {
+    
+    playoff_games <- hoopR::load_nba_schedule(seasons = game_year) %>%
+      dplyr::filter(
+        season_type == 3,
+        (
+          (stringr::str_detect(home_display_name, target_team) &
+             stringr::str_detect(away_display_name, opposing_team)) |
+            (stringr::str_detect(home_display_name, opposing_team) &
+               stringr::str_detect(away_display_name, target_team))
+        )
+      ) %>%
+      dplyr::arrange(game_date)
+    
+    game_number <- match(game_id, playoff_games$game_id)
+    
+    plot_title <- paste0(
+      target_team,
+      " shots vs ",
+      opposing_team,
+      " (",
+      game_year,
+      ", Game ",
+      game_number,
+      ") with ",
+      target_player,
+      " highlighted"
+    )
+    
+  } else {
+    
+    plot_title <- paste0(
+      target_team,
+      " shots vs ",
+      opposing_team,
+      " (",
+      game_year,
+      ") with ",
+      target_player,
+      " highlighted"
+    )
+    
+  }
+  
+  plot_subtitle <- paste0(
+    "Negative means losing | ",
+    game_date_lbl
+  )
   
   # ---------------------------------------------------------
   # plot

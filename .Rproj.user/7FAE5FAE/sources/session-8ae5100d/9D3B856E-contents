@@ -4,7 +4,7 @@ date: 6/15
 format: html
 ---
 
-```{r}
+```{r, include=FALSE}
 source("../scripts/NBA_synergy_copy.R")
 knitr::opts_knit$set(root.dir = here::here())
 library(stringr)
@@ -23,16 +23,19 @@ game_1 <- plot_player_shots('Victor Wembanyama', 'Spurs', 'Knicks', 2026, 401859
 game_2 <- plot_player_shots('Victor Wembanyama', 'Spurs', 'Knicks', 2026, 401859964)[[1]]
 ```
 
-```{r}
-games <- list(game_1,game_2)
-wrap_plots(games)
+```{r, echo=FALSE}
+game_1
 ```
+```{r, echo=FALSE}
+game_2
+```
+
 
 Notice those strange gaps that consistently appear, or what about when he suddenly decides to throw up a barrage of shots immediately after the Knicks take a long awaited lead (in both games!!). If the Spurs offense feels clunky and unnatural, it's because his scoring has not come in-flow. Right now this isn't about the type of shots that he takes (we'll get there) but more so about the inconsistent and clustered nature at which he takes them. I am trying to put numbers and graphs to the unhealthy feeling that a lot of his games have had. Think of a normal superstar offensive game from Wemby - Game 1, western conference finals vs OKC.
 
 This is his chart from that game.
 
-```{r}
+```{r, echo=FALSE}
 plot_player_shots('Victor Wembanyama', 'Spurs', 'Thunder', 2026, 401873197)[[1]]
 ```
 
@@ -74,7 +77,7 @@ I’ll leave you with 3 players, all compared to Wemby, with both lead scorer an
 
 Every time, without fail, the secondary scorer version is more similar. With this year's Jaylen brown being among the least comparable to Wemby that I scored.
 
-```{r}
+```{r, echo=FALSE}
 plot_player_shots('Victor Wembanyama', 'Spurs', 'Knicks', 2026, 401859965)[[1]]
 ```
 
@@ -88,6 +91,9 @@ Remember when Aaron Gordon was a hapless role player stuck in a star's body and 
 
 Jokic and Embiid comparables for 2021 ![](./images/jokic.png) ![](./images/embiid.png) Also a KD graph from when he was 24 and led his team to the finals AFTER leading the league in scoring for the 3 years prior, because I didn't talk about KD enough. Look at how evenly distributed those shots are.
 
-```{r}
+```{r, echo=FALSE}
 plot_player_shots('Kevin Durant', 'Thunder', 'Heat', 2012, 320612025)[[1]]
 ```
+
+
+
