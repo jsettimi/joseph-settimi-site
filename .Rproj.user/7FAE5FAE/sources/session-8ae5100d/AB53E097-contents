@@ -3,7 +3,11 @@ project:
 
 website:
   title: "Joseph Settimi"
+  site-url: "https://4ecfa868.joseph-settimi-site.pages.dev"
+  description: "Personal site of Joseph Settimi"
   navbar:
+    background: light
+    pinned: true
     left:
       - href: index.qmd
         text: Home
@@ -11,14 +15,23 @@ website:
         text: Articles
       - href: about.qmd
         text: About
+    right:
+      - icon: github
+        href: https://github.com/jsettimi
+      - icon: linkedin
+        href: https://www.linkedin.com/in/your-profile
+  page-footer:
+    left: "© 2026 Joseph Settimi"
+    right:
+      - icon: github
+        href: https://github.com/jsettimi
 
 format:
   html:
     theme:
-      - cosmo
-      - brand
+      light: [cosmo, styles.scss]
     css: styles.css
-    toc: true
-
-editor: visual
-
+    toc: false
+    fontsize: 1.05em
+    linkcolor: "#2563eb"
+    mainfont: "Inter, -apple-system, BlinkMacSystemFont, sans-serif"

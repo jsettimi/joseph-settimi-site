@@ -1,6 +1,10 @@
+library(dplyr)
+library(stringr)
+library(ggplot2)
+library(hoopR)
 library(httr)
 library(jsonlite)
-library(dplyr)
+library(patchwork)
 
 filter_play_type <- function(playtype, player_or_team, off_or_def, download = FALSE, permode = 'PerGame', playoff_or_reg = 'Regular Season', season_year = '2025-26') {
   # Define the URL and parameters
@@ -63,7 +67,7 @@ filter_play_type <- function(playtype, player_or_team, off_or_def, download = FA
     
     # Assuming `my_tibble` is your tibble
     dataframe <- dataframe %>%
-      mutate(across(7:ncol(.), as.numeric))
+      dplyr::mutate(across(7:ncol(.), as.numeric))
     
     dataframe <- dataframe %>% select(-PLAY_TYPE, -TYPE_GROUPING)
     
@@ -201,7 +205,7 @@ filter_shooting_data <- function(stat = "Efficiency", position = "", team = '""'
     
     # Assuming `my_tibble` is your tibble
     dataframe <- dataframe %>%
-      mutate(across(7:ncol(.), as.numeric), year = szn)
+      dplyr::mutate(across(7:ncol(.), as.numeric), year = szn)
     
     # If download is TRUE, save the dataframe to a CSV file
     if (download) {
@@ -313,11 +317,11 @@ chart_ovd <- function(stat, offense, defense, pos = NA, year = '2025-26') {
     ELBOW        = "ELBOW_TOUCH_PTS"
   )
   
-  def_color1 <- tc %>% filter(TEAM_ABBREVIATION == defense) %>% pull(primary)
-  def_color2 <- tc %>% filter(TEAM_ABBREVIATION == defense) %>% pull(secondary)
+  def_color1 <- tc %>% dplyr::filter(TEAM_ABBREVIATION == defense) %>% pull(primary)
+  def_color2 <- tc %>% dplyr::filter(TEAM_ABBREVIATION == defense) %>% pull(secondary)
   
-  off_color1 <- tc %>% filter(TEAM_ABBREVIATION == offense) %>% pull(primary)
-  off_color2 <- tc %>% filter(TEAM_ABBREVIATION == offense) %>% pull(secondary)
+  off_color1 <- tc %>% dplyr::filter(TEAM_ABBREVIATION == offense) %>% pull(primary)
+  off_color2 <- tc %>% dplyr::filter(TEAM_ABBREVIATION == offense) %>% pull(secondary)
   
   if (is.na(def_color2)){def_color2 = 'black'}
   if (is.na(off_color2)){off_color2 = 'black'}
@@ -346,7 +350,7 @@ chart_ovd <- function(stat, offense, defense, pos = NA, year = '2025-26') {
 
 shot_similarity <- function(tgt, players,  tgt_year = '2025-26', x = 10, type = 'Regular Season') {
   
-  target <- filter_shooting_data(szn = tgt_year, szn_type = type) %>% filter(PLAYER_NAME == tgt) %>% select(PLAYER_ID, PLAYER_NAME, MIN, POINTS, DRIVE_PTS, CATCH_SHOOT_PTS, PULL_UP_PTS, PAINT_TOUCH_PTS, POST_TOUCH_PTS, ELBOW_TOUCH_PTS)
+  target <- filter_shooting_data(szn = tgt_year, szn_type = type) %>% dplyr::filter(PLAYER_NAME == tgt) %>% select(PLAYER_ID, PLAYER_NAME, MIN, POINTS, DRIVE_PTS, CATCH_SHOOT_PTS, PULL_UP_PTS, PAINT_TOUCH_PTS, POST_TOUCH_PTS, ELBOW_TOUCH_PTS)
   
   if (nrow(players) <= x){x = nrow(players)}
   else {x = x}
@@ -387,11 +391,11 @@ plot_player_shots <- function(target_player,
     sched <- hoopR::load_nba_schedule(seasons = game_year)
     
     matchups <- sched %>%
-      filter(
-        (str_detect(home_display_name, target_team) | str_detect(away_display_name, target_team)),
-        (str_detect(home_display_name, opposing_team) | str_detect(away_display_name, opposing_team))
+      dplyr::filter(
+        (stringr::str_detect()(home_display_name, target_team) | stringr::str_detect()(away_display_name, target_team)),
+        (stringr::str_detect()(home_display_name, opposing_team) | stringr::str_detect()(away_display_name, opposing_team))
       ) %>%
-      mutate(
+      dplyr::mutate(
         label = paste0(away_display_name, " @ ", home_display_name,
                        ", ", as.Date(game_date), ": ", game_id)
       ) %>%
@@ -409,15 +413,15 @@ plot_player_shots <- function(target_player,
   # ---------------------------------------------------------
   # 2. game_id supplied -> build the chart
   # ---------------------------------------------------------
-  
-  pbp <- hoopR::load_nba_pbp(seasons = game_year) %>% filter(game_id == as.integer(.env$game_id))
+  pbp_all <- hoopR::load_nba_pbp(seasons = game_year)
+  pbp <- subset(pbp_all, game_id == game_id)
   
   if (!('points_attempted' %in% colnames(pbp))) {
-    pbp <- pbp %>% mutate(
+    pbp <- pbp %>% dplyr::mutate(
       points_attempted = case_when(
-        str_detect(text, regex("Free Throw", ignore_case = TRUE)) ~ 1L,
-        str_detect(text, regex("Three Point|Three Pointer", ignore_case = TRUE)) ~ 3L,
-        str_detect(text, regex("Jumper|Shot|Layup|Dunk|Hook Shot|Tip Shot|Running Jumper", ignore_case = TRUE)) ~ 2L,
+        stringr::str_detect()(text, regex("Free Throw", ignore_case = TRUE)) ~ 1L,
+        stringr::str_detect()(text, regex("Three Point|Three Pointer", ignore_case = TRUE)) ~ 3L,
+        stringr::str_detect()(text, regex("Jumper|Shot|Layup|Dunk|Hook Shot|Tip Shot|Running Jumper", ignore_case = TRUE)) ~ 2L,
         TRUE ~ NA_integer_
       )
     )
@@ -425,33 +429,33 @@ plot_player_shots <- function(target_player,
   
   # roster for the target team, that season, so athlete IDs match correctly
   roster <- hoopR::load_nba_player_box(seasons = game_year) %>%
-    filter(team_name == target_team) %>%
+    dplyr::filter(team_name == target_team) %>%
     select(athlete_id, athlete_display_name) %>%
     distinct(athlete_id, .keep_all = TRUE)
   
   # figure out home/away orientation for this specific game so the
   # "lead" sign is always from target_team's perspective
   game_meta <- hoopR::load_nba_schedule(seasons = game_year) %>%
-    filter(game_id == .env$game_id) %>%
+    dplyr::filter(game_id == .env$game_id) %>%
     slice(1)
   
-  target_is_home <- str_detect(game_meta$home_display_name, target_team)
+  target_is_home <- stringr::str_detect()(game_meta$home_display_name, target_team)
   
   game_o <- pbp %>%
-    mutate(
+    dplyr::mutate(
       diff = if (target_is_home) home_score - away_score else away_score - home_score
     ) %>%
-    filter(!type_id %in% c(99, 101, 102, 282) & shooting_play) %>%
+    dplyr::filter(!type_id %in% c(99, 101, 102, 282) & shooting_play) %>%
     select(end_game_seconds_remaining, athlete_id_1, points_attempted, diff) %>%
     rename(athlete_id = athlete_id_1) %>%
-    filter(athlete_id %in% roster$athlete_id) %>%
+    dplyr::filter(athlete_id %in% roster$athlete_id) %>%
     inner_join(roster, by = "athlete_id")
   
   # ---------------------------------------------------------
   # dynamic team colors
   # ---------------------------------------------------------
   colors <- teamcolors::teamcolors %>%
-    filter(league == 'nba', mascot == target_team)
+    dplyr::filter(league == 'nba', mascot == target_team)
   
   highlight_color <- colors$primary[1]
   base_color      <- colors$secondary[1]
