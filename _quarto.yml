@@ -1,35 +1,6 @@
-project:
-  type: website
-
-website:
-  title: "Joseph Settimi"
-  site-url: "https://4ecfa868.joseph-settimi-site.pages.dev"
-  description: "Personal site of Joseph Settimi"
-  navbar:
-    background: light
-    pinned: true
-    left:
-      - href: index.qmd
-        text: Home
-      - href: posts.qmd
-        text: Articles
-      - href: about.qmd
-        text: About
-    right:
-      - icon: github
-        href: https://github.com/jsettimi
-      - icon: linkedin
-        href: https://www.linkedin.com/in/your-profile
-  page-footer:
-    left: "© 2026 Joseph Settimi"
-    right:
-      - icon: github
-        href: https://github.com/jsettimi
-
 format:
   html:
-    theme:
-      light: [cosmo, styles.scss]
+    theme: cosmo
     css: styles.css
     toc: false
     fontsize: 1.05em
