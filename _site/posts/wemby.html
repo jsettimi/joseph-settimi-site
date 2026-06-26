@@ -24,41 +24,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -191,32 +156,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"../scripts/NBA_synergy_copy.R"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Attaching package: 'dplyr'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:stats':
-
-    filter, lag</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:base':
-
-    intersect, setdiff, setequal, union</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
 <p>Joseph Settimi aka <span class="citation" data-cites="wosephcantmiss">@wosephcantmiss</span> on tiktok</p>
 <p><strong>Victor Wembanyama</strong> and his seemingly infinite ways to score the basketball provide an insane conundrum for defenses. Everybody knows that, obviously, but I think this conundrum might extend past his opponents, and also fall in the lap of himself and his teammates. During games 1 and especially 2 of these 2026 Finals, it feels like Wemby’s status as an elite scorer on and off the ball disappears for minutes or quarters at a time. He is uninvolved in many possessions, being used as a prop to set screens with the occasional fake threat of a 30 foot pick n pop. These runs of uninvolvement usually end with forced shots when the Spurs find themselves minutes (not a coincidence) into a Knicks run.</p>
 <p>I am going to vow not to bring up defense in this entire write-up. This is about the areas he needs to grow offensively, and the unique challenges his skills create for himself.</p>
 <p>I wanted to be able to visualize this in hopes of letting the game script confirm what I believed to be true: he doesn’t hunt shots at the speed and game flow (not the frequency, those numbers check out) of regular offensive superstars. Below is a plot of games 1 and 2 plotted by the Spurs lead (negative for losing, inspired by The Diff™).</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>games <span class="ot">&lt;-</span> <span class="fu">list</span>(game_1,game_2)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">wrap_plots</span>(games)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -225,14 +169,22 @@ Attaching package: 'dplyr'</code></pre>
 </div>
 </div>
 </div>
-<p>Notice those strange gaps that consistently appear, or what about when he suddenly decides to throw up a barrage of shots immediately after the Knicks take a long awaited lead (in both games!!). If the Spurs offense feels clunky and unnatural, it’s because his scoring has not come in-flow. Right now this isn’t about the type of shots that he takes (we’ll get there) but more so about the inconsistent and clustered nature at which he takes them. I am trying to put numbers and graphs to the unhealthy feeling that a lot of his games have had. Think of a normal superstar offensive game from Wemby - Game 1, western conference finals vs OKC.</p>
-<p>This is his chart from that game.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_player_shots</span>(<span class="st">'Victor Wembanyama'</span>, <span class="st">'Spurs'</span>, <span class="st">'Thunder'</span>, <span class="dv">2026</span>, <span class="dv">401873197</span>)[[<span class="dv">1</span>]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
 <p><img src="wemby_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Notice those strange gaps that consistently appear, or what about when he suddenly decides to throw up a barrage of shots immediately after the Knicks take a long awaited lead (in both games!!). If the Spurs offense feels clunky and unnatural, it’s because his scoring has not come in-flow. Right now this isn’t about the type of shots that he takes (we’ll get there) but more so about the inconsistent and clustered nature at which he takes them. I am trying to put numbers and graphs to the unhealthy feeling that a lot of his games have had. Think of a normal superstar offensive game from Wemby - Game 1, western conference finals vs OKC.</p>
+<p>This is his chart from that game.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="wemby_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -258,11 +210,10 @@ Attaching package: 'dplyr'</code></pre>
 <p>I’ll leave you with 3 players, all compared to Wemby, with both lead scorer and secondary scorer versions of themselves. <img src="./images/bench_starter.png" class="img-fluid"></p>
 <p>Every time, without fail, the secondary scorer version is more similar. With this year’s Jaylen brown being among the least comparable to Wemby that I scored.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_player_shots</span>(<span class="st">'Victor Wembanyama'</span>, <span class="st">'Spurs'</span>, <span class="st">'Knicks'</span>, <span class="dv">2026</span>, <span class="dv">401859965</span>)[[<span class="dv">1</span>]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="wemby_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="wemby_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -274,11 +225,10 @@ Attaching package: 'dplyr'</code></pre>
 <p>Remember when Aaron Gordon was a hapless role player stuck in a star’s body and draft slot, the former top 4 pick in Orlando. But he found his home as Nikola Jokic’s henchman, Aaron Gordon has never been half the offensive player Wemby is, when he tried to shoulder anything close to Wemby’s volume (15 FGA in 2017 compared to Wemby’s 17 this year). He fell just shy of Wemby’s championship birth, at a record of 25 and 57.</p>
 <p>Jokic and Embiid comparables for 2021 <img src="./images/jokic.png" class="img-fluid"> <img src="./images/embiid.png" class="img-fluid"> Also a KD graph from when he was 24 and led his team to the finals AFTER leading the league in scoring for the 3 years prior, because I didn’t talk about KD enough. Look at how evenly distributed those shots are.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_player_shots</span>(<span class="st">'Kevin Durant'</span>, <span class="st">'Thunder'</span>, <span class="st">'Heat'</span>, <span class="dv">2012</span>, <span class="dv">320612025</span>)[[<span class="dv">1</span>]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="wemby_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="wemby_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>

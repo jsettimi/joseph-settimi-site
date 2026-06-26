@@ -1,3 +1,0 @@
-"0","source(""../scripts/NBA_synergy_copy.R"")"
-"0","knitr::opts_knit$set(root.dir = here::here())"
-"0","library(stringr)"
