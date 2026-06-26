@@ -1,3 +1,0 @@
-[1,"==> quarto preview wemby.qmd --to html --no-watch-inputs --no-browse\n\n"]
-[1,"\u001B[31mError in rmarkdown:::abs_path(input) : \n  The file 'wemby.qmd' does not exist.\nCalls: .main -> execute -> setwd -> dirname -> <Anonymous>\n\u001B[39m\u001B[31mExecution halted\n\u001B[39m"]
-[1,"\u001B[33mWARN: Error encountered when rendering files\u001B[39m\n"]

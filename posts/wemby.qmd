@@ -12,7 +12,9 @@ library(stringr)
 
 Joseph Settimi aka @wosephcantmiss on tiktok
 
-**Victor Wembanyama** and his seemingly infinite ways to score the basketball provide an insane conundrum for defenses. Everybody knows that, obviously, but I think this conundrum might extend past his opponents, and also fall in the lap of himself and his teammates. During games 1 and especially 2 of these 2026 Finals, it feels like Wemby's status as an elite scorer on and off the ball disappears for minutes or quarters at a time. He is uninvolved in many possessions, being used as a prop to set screens with the occasional fake threat of a 30 foot pick n pop. These runs of uninvolvement usually end with forced shots when the Spurs find themselves minutes (not a coincidence) into a Knicks run.
+**Victor Wembanyama** and his seemingly infinite ways to score the basketball provide an insane conundrum for defenses. Everybody knows that, obviously, but I think this conundrum might extend past his opponents, and also fall in the lap of himself and his teammates.
+
+During games 1 and especially 2 of the 2026 Finals, it feels like Wemby's status as an elite scorer on and off the ball disappears for minutes or quarters at a time. He is uninvolved in many possessions, being used as a prop to set screens with the occasional fake threat of a 30 foot pick n pop. These runs of uninvolvement usually end with forced shots when the Spurs find themselves minutes (not a coincidence) into a Knicks run.
 
 I am going to vow not to bring up defense in this entire write-up. This is about the areas he needs to grow offensively, and the unique challenges his skills create for himself.
 
