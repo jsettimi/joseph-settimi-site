@@ -1,0 +1,11 @@
+---
+title: "Offense vs Defense Explorer"
+description: "Compare how teams defend different scoring types."
+---
+
+<iframe
+  src="app/index.html"
+  width="100%"
+  height="1000"
+  frameborder="0">
+</iframe>
