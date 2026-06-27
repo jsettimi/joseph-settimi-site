@@ -9,7 +9,7 @@ website:
         text: Home
       - href: posts.qmd
         text: Posts
-      - href: http://127.0.0.1:6529
+      - href: graphs.qmd
         text: Graphs
 
 format:

@@ -1,5 +1,11 @@
 [
   {
+    "listing": "/graphs.html",
+    "items": [
+      "/graphs/chart_ovd/index.html"
+    ]
+  },
+  {
     "listing": "/posts.html",
     "items": [
       "/posts/dusty_may.html",

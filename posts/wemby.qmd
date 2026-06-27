@@ -5,13 +5,12 @@ format: html
 image: ./images/wemby_AG.png
 ---
 
----
-
 ```{r, include=FALSE}
 source("../scripts/NBA_synergy_copy.R")
-knitr::opts_knit$set(root.dir = here::here())
+#knitr::opts_knit$set(root.dir = here::here())
 library(stringr)
 ```
+
 
 Joseph Settimi aka @wosephcantmiss on tiktok
 
@@ -90,7 +89,7 @@ Wemby’s offensive ceiling is boundless, and every game is one he could erupt f
 
 ### **Epilogue**
 
-***S**ome more graphs to prove that it's not just a weird center thing, and a blurb to prove that I swear I'm not trying to say Aaron Gordon and Kyle Filipowski are comparable scorers to Wembanyama.*
+*Some more graphs to prove that it's not just a weird center thing, and a blurb to prove that I swear I'm not trying to say Aaron Gordon and Kyle Filipowski are comparable scorers to Wembanyama.*
 
 Remember when Aaron Gordon was a hapless role player stuck in a star's body and draft slot, the former top 4 pick in Orlando. But he found his home as Nikola Jokic’s henchman, Aaron Gordon has never been half the offensive player Wemby is, when he tried to shoulder anything close to Wemby's volume (15 FGA in 2017 compared to Wemby’s 17 this year). He fell just shy of Wemby's championship birth, at a record of 25 and 57.
 

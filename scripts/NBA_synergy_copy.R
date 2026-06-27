@@ -6,9 +6,6 @@ library(httr)
 library(jsonlite)
 library(patchwork)
 
-teams <- filter_shooting_data(player = 'Team')
-tc <- teams %>% select(TEAM_NAME, TEAM_ABBREVIATION) %>% left_join(teamcolors::teamcolors %>% rename('TEAM_NAME' = name), by = 'TEAM_NAME')
-
 filter_play_type <- function(playtype, player_or_team, off_or_def, download = FALSE, permode = 'PerGame', playoff_or_reg = 'Regular Season', season_year = '2025-26') {
   # Define the URL and parameters
   url <- "https://stats.nba.com/stats/synergyplaytypes"
@@ -222,6 +219,9 @@ filter_shooting_data <- function(stat = "Efficiency", position = "", team = '""'
     return(NULL)
   }
 }
+
+teams <- filter_shooting_data(player = 'Team')
+tc <- teams %>% select(TEAM_NAME, TEAM_ABBREVIATION) %>% left_join(teamcolors::teamcolors %>% rename('TEAM_NAME' = name), by = 'TEAM_NAME')
 
 # Example usage:
 # result <- filter_shooting_data(stat = "Efficiency", team = "LAL", opponent = "BOS", position = "G", download = TRUE)
