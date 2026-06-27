@@ -12,11 +12,12 @@ library(ggplot2)
 library(plotly)
 library(dplyr)
 library(teamcolors)
+source("../../scripts/NBA_synergy_copy.R")
 
 teams <- filter_shooting_data(player = 'Team')
 tc <- teams %>% select(TEAM_NAME, TEAM_ABBREVIATION) %>% left_join(teamcolors::teamcolors %>% rename('TEAM_NAME' = name), by = 'TEAM_NAME')
 
-source("../scripts/NBA_synergy_copy.R")
+
 
 # Define UI for application that draws a histogram
 ui <- fluidPage(
