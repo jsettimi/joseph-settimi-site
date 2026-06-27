@@ -1,8 +1,8 @@
 ---
 title: "Interactive Graphs"
 listing:
-  contents: graphs
-  recursive: true
+  contents:
+    - graphs/**/index.qmd
   type: default
   sort: "title"
   fields: [title, description]
