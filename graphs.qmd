@@ -2,11 +2,10 @@
 title: "Interactive Graphs"
 listing:
   contents: graphs
+  recursive: true
   type: default
   sort: "title"
   fields: [title, description]
 ---
+Explore NBA visualizations and tools built from really really unique NBA data.
 
-# Interactive Graphs
-
-Explore NBA visualizations and tools built from my Synergy data pipeline.
