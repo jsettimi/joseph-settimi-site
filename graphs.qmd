@@ -1,0 +1,12 @@
+---
+title: "Interactive Graphs"
+listing:
+  contents: graphs
+  type: default
+  sort: "title"
+  fields: [title, description]
+---
+
+# Interactive Graphs
+
+Explore NBA visualizations and tools built from my Synergy data pipeline.
