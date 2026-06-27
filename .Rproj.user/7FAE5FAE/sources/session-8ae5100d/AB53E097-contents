@@ -9,6 +9,8 @@ website:
         text: Home
       - href: posts.qmd
         text: Posts
+      - href: shiny/app.R
+        text: Graphs
 
 format:
   html:
