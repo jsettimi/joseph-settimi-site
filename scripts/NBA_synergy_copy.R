@@ -6,6 +6,9 @@ library(httr)
 library(jsonlite)
 library(patchwork)
 
+teams <- filter_shooting_data(player = 'Team')
+tc <- teams %>% select(TEAM_NAME, TEAM_ABBREVIATION) %>% left_join(teamcolors::teamcolors %>% rename('TEAM_NAME' = name), by = 'TEAM_NAME')
+
 filter_play_type <- function(playtype, player_or_team, off_or_def, download = FALSE, permode = 'PerGame', playoff_or_reg = 'Regular Season', season_year = '2025-26') {
   # Define the URL and parameters
   url <- "https://stats.nba.com/stats/synergyplaytypes"
@@ -340,7 +343,7 @@ chart_ovd <- function(stat, offense, defense, pos = NA, year = '2025-26') {
   off5 <- off %>% slice_max(order_by = off %>% pull(col_map[stat]), n = 5) %>% pull(col_map[stat])
   off5_name <- off %>% slice_max(order_by = off %>% pull(col_map[stat]), n = 5)
   
-  vs_def <- def %>% inner_join(players, by = join_by(PLAYER_ID, PLAYER_NAME), suffix = c(suff, 'avg')) %>% ggplot(aes_string(paste0(col_map[stat], 'avg'), paste0(col_map[stat], suff))) + geom_point(colour = def_color1) + geom_abline(slope = 1, intercept = 0, linewidth = 1.1, color = def_color2) + geom_smooth(method = 'loess', se = T, color = NA, alpha = 0.4) + geom_vline(xintercept = off5, linetype = 'dashed', color = off_color1) + geom_text(inherit.aes = F, data = off5_name, x = off5, aes(label = PLAYER_NAME, y= 13), fontface = 'bold.italic', color = off_color1, angle = 90, size = 2.6, vjust = -0.3, hjust = 0.5, position = "jitter") + coord_cartesian(clip = "off") + theme_minimal() + labs(title = tit, x = xlab, y = ylab, subtitle = subtit) + theme(plot.title = element_text(face = 'bold'), plot.subtitle = element_text(color = 'slategray'), axis.title = element_text(face = 'bold.italic'))
+  vs_def <- def %>% inner_join(players, by = join_by(PLAYER_ID, PLAYER_NAME), suffix = c(suff, 'avg')) %>% ggplot(aes_string(paste0(col_map[stat], 'avg'), paste0(col_map[stat], suff))) + geom_point(colour = def_color1) + geom_abline(slope = 1, intercept = 0, linewidth = 1.1, color = def_color2) + geom_smooth(method = 'loess', se = T, color = NA, alpha = 0.4) + geom_vline(xintercept = off5, linetype = 'dashed', color = off_color1) + geom_text(inherit.aes = F, data = off5_name, x = off5, aes(label = PLAYER_NAME, y= 13), fontface = 'bold.italic', color = off_color1, angle = 90, size = 4, vjust = -0.3, hjust = 0.5, position = "jitter") + coord_cartesian(clip = "off") + theme_minimal() + labs(title = tit, x = xlab, y = ylab, subtitle = subtit) + theme(plot.title = element_text(face = 'bold'), plot.subtitle = element_text(color = 'slategray'), axis.title = element_text(face = 'bold.italic'))
   
   vs_off <- off %>% ggplot(aes(x = PLAYER_NAME)) + geom_col(aes(y = POINTS), alpha = 0.6, fill = off_color2) + geom_col(aes_string(y = col_map[stat]), fill = off_color1) + labs(title = tit2, subtitle = 'via NBA.com') + theme_minimal() + theme(plot.title = element_text(face = 'bold'), plot.subtitle = element_text(color = 'slategray'), axis.title.x = element_blank(), axis.text.x = element_text(angle = 80, vjust = 0.5, face = 'bold'), axis.title.y = element_text(face = 'bold.italic'))
   
