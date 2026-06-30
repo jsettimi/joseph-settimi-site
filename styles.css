@@ -304,6 +304,73 @@ main.content {
   font-size: 0.9rem;
 }
 
+/* ========== ARTICLE TYPE STYLING ========== */
+
+.quarto-title-block .description::before {
+  content: attr(data-type);
+  display: block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #666;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+/* Left border for article type coding */
+body.article-interactive {
+  border-left: 4px solid #0ea5e9;
+  padding-left: 0;
+}
+
+body.article-essay {
+  border-left: 4px solid #6366f1;
+  padding-left: 0;
+}
+
+/* Inject type indicator in title */
+h1.title::before {
+  content: attr(data-article-type);
+  display: block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #0ea5e9;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+body.article-essay h1.title::before {
+  color: #6366f1;
+}
+
+/* ========== IMAGE LAYOUTS ========== */
+
+.chart-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.image-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.float-right {
+  float: right;
+  margin: 0 0 1.5rem 1.5rem;
+  max-width: 300px;
+}
+
+.float-right img {
+  width: 100%;
+  height: auto;
+}
+
 /* ========== RESPONSIVE ========== */
 
 @media (max-width: 768px) {
@@ -323,5 +390,16 @@ main.content {
 
   .section-heading {
     font-size: 1.5rem;
+  }
+
+  .chart-grid,
+  .image-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .float-right {
+    float: none;
+    margin: 1.5rem 0;
+    max-width: 100%;
   }
 }

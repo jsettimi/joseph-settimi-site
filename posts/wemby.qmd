@@ -3,6 +3,7 @@ title: "wemby"
 date: 6/15
 format: html
 image: ./images/wemby_AG.png
+article-type: interactive
 ---
 
 ```{r, include=FALSE}
@@ -27,13 +28,15 @@ game_1 <- plot_player_shots('Victor Wembanyama', 'Spurs', 'Knicks', 2026, 401859
 game_2 <- plot_player_shots('Victor Wembanyama', 'Spurs', 'Knicks', 2026, 401859964)[[1]]
 ```
 
-```{r, echo=FALSE}
+::: {.chart-grid}
+```{r, echo=FALSE, fig.width=6, fig.height=5}
 game_1
 ```
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, fig.width=6, fig.height=5}
 game_2
 ```
+:::
 
 Notice those strange gaps that consistently appear, or what about when he suddenly decides to throw up a barrage of shots immediately after the Knicks take a long awaited lead (in both games!!). If the Spurs offense feels clunky and unnatural, it's because his scoring has not come in-flow. Right now this isn't about the type of shots that he takes (we'll get there) but more so about the inconsistent and clustered nature at which he takes them. I am trying to put numbers and graphs to the unhealthy feeling that a lot of his games have had. Think of a normal superstar offensive game from Wemby - Game 1, western conference finals vs OKC.
 

@@ -2,6 +2,7 @@
 title: "The Dusty May Moratorium"
 date: 2026-06-26
 image: ./images/morez.png
+article-type: essay
 ---
 
 Joseph Settimi aka @wosephcantmiss on tiktok
@@ -16,15 +17,19 @@ My dad and I are pretty greedy fans, so not even 24 hours after the net was cut 
 
 ### It starts with one simple exercise, did the Boogeymen actually vanish?
 
-Luke Hancock, pictured on the right of what looks to be an admittedly pretty hilarious sit-com cast, but is actually the partner's photo at his branch of Raymond James. This seemingly innocuous financier averaged 8 points a game on Louisville's 2013 National Championship team. Except for the finals versus Michigan, where he scored FOURTEEN straight points, out of a total 22 for the game. He absorbs much of my blame for Michigan's all time greatest player and coach, Trey Burke and John Belien, not securing a ring. This was the first year I ever watched Michigan basketball, Trey Burke was the first player I knew, my dad tackling me to the ground as his shot went in against Kansas, was the first moment I remember. In the same way Luke Hancock's performance doesn't make that year all for naught, our championship in 2026 doesn't erase this loss from memory. **Verdict: No, he did not vanish.**
+::: {.float-right}
+![](images/Hancock.png){width="300"}
+:::
 
-![](images/Hancock.png){fig-align="center" width="375"}
+Luke Hancock, pictured on the right of what looks to be an admittedly pretty hilarious sit-com cast, but is actually the partner's photo at his branch of Raymond James. This seemingly innocuous financier averaged 8 points a game on Louisville's 2013 National Championship team. Except for the finals versus Michigan, where he scored FOURTEEN straight points, out of a total 22 for the game. He absorbs much of my blame for Michigan's all time greatest player and coach, Trey Burke and John Belien, not securing a ring. This was the first year I ever watched Michigan basketball, Trey Burke was the first player I knew, my dad tackling me to the ground as his shot went in against Kansas, was the first moment I remember. In the same way Luke Hancock's performance doesn't make that year all for naught, our championship in 2026 doesn't erase this loss from memory. **Verdict: No, he did not vanish.**
 
 Here's Trey Burke hitting an all time great 3 and making an all time great block →
 
-![](images/Burke_shot.png){width="297"}
+::: {.image-grid}
+![](images/Burke_shot.png){width="280"}
 
-![](images/Burke_block.png){width="294"}
+![](images/Burke_block.png){width="280"}
+:::
 
 \
 The very year after Luke had his game, Aaron Harrison hit a shot way more damning than any that Hancock hit. A deep 3 point buzzer beater more reminiscent of the Trey Burke shot than anything else. By my count, he and his brother hit 6 of these shots, and Michigan was just a benchmark in their trail of tears. Many could argue that this succeeding the finals loss adds insult to injury, but I think my heart had formed calices by that point. **Verdict: Yes, he vanished.**

@@ -535,7 +535,7 @@ plot_player_shots <- function(target_player,
     scale_x_reverse() +
     theme_minimal() +
     theme(
-      plot.title = element_text(face = 'bold', size = 14),
+      plot.title = element_text(face = 'bold', size = 11),
       plot.subtitle = element_text(face = 'italic', color = 'slategrey'),
       axis.title.x = element_text(vjust = -0.75, face = 'bold', hjust = 0.5),
       axis.title.y = element_text(vjust = 0.75, face = 'bold'),
@@ -559,7 +559,7 @@ plot_player_shots <- function(target_player,
     scale_x_reverse() + scale_y_continuous(breaks = c(1,2,3)) + 
     theme_minimal() +
     theme(
-      plot.title = element_text(face = 'bold', size = 14),
+      plot.title = element_text(face = 'bold', size = 11),
       plot.subtitle = element_text(face = 'italic', color = 'slategrey'),
       axis.title.x = element_text(vjust = -0.75, face = 'bold', hjust = 0.5),
       axis.title.y = element_text(vjust = 0.75, face = 'bold'),
