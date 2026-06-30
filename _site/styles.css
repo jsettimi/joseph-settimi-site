@@ -1,144 +1,327 @@
-/* ---------------------------------------------
-   Index / homepage styles
-   Save as styles.css and reference from index.qmd
-   front matter:
-     css: styles.css
----------------------------------------------- */
+/* Hybrid Minimalist + Modern Interactive Design */
 
-/* Warm off-white background — not stark/clinical white */
 body {
-  background-color: #faf9f6;
+  background-color: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
-/* Bold navy for titles + emphasis */
-h1, h2, h3, h4,
-.navbar-title,
-strong {
-  color: #1b2a4a;
+/* ========== HERO SECTION ========== */
+
+.quarto-title-banner {
+  background: #fff;
+  padding: 4rem 2rem 3rem;
+  border-bottom: 1px solid #e5e5e5;
 }
 
 h1.title {
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  font-size: 2.8rem;
-  line-height: 1.1;
+  font-size: 4rem;
+  font-weight: 900;
+  margin: 0 0 1rem 0;
+  letter-spacing: -0.04em;
+  color: #000;
+  line-height: 1;
 }
 
-/* Hero section at top of homepage */
-.quarto-title-banner {
-  background: linear-gradient(160deg, #f0ece1 0%, #faf9f6 60%);
-  padding: 4rem 0 2.5rem 0;
-  border-bottom: 1px solid #ece7da;
-}
-
-/* Optional intro/tagline text under the name */
-.hero-subtitle,
-.quarto-title-block .description {
-  color: #4a5266;
-  font-size: 1.25rem;
-  font-weight: 400;
-  margin-top: 0.5rem;
-  max-width: 540px;
-}
-
-/* Small gold accent rule under the main title — adds warmth without noise */
 .quarto-title-banner h1.title::after {
   content: "";
   display: block;
-  width: 56px;
-  height: 4px;
-  background: #c08a3e;
-  border-radius: 2px;
+  width: 70px;
+  height: 3px;
+  background: #0ea5e9;
+  border-radius: 0;
   margin-top: 1rem;
+  margin-bottom: 2rem;
 }
 
-/* Body text */
+.hero-subtitle,
+.quarto-title-block .description {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: #404040;
+  font-weight: 400;
+  margin: 0;
+  max-width: 520px;
+}
+
+/* ========== MAIN CONTENT ========== */
+
 main.content {
-  max-width: 760px;
+  max-width: 800px;
   margin: 0 auto;
-  color: #2a2f3a;
+  padding: 0 2rem;
+  color: #000;
 }
 
 .content p {
-  font-size: 1.08rem;
-  line-height: 1.75;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #666;
 }
 
-/* Links — navy with gold hover, ties the palette together */
-.content a {
-  color: #1b2a4a;
-  text-decoration: underline;
-  text-decoration-color: rgba(27, 42, 74, 0.3);
-  text-underline-offset: 2px;
-  font-weight: 600;
-}
-.content a:hover {
-  color: #c08a3e;
-  text-decoration-color: #c08a3e;
+/* ========== FEATURED ARTICLES GRID ========== */
+
+.featured-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin: 2rem 0 3rem 0;
 }
 
-/* "Cards" for highlighting featured posts/projects on the homepage —
-   use a div with class="home-card" around content in your .qmd */
-.home-card {
-  background: #ffffff;
-  border: 1px solid #ece7da;
-  border-radius: 12px;
-  padding: 1.5rem 1.75rem;
-  margin: 1.25rem 0;
-  box-shadow: 0 4px 16px rgba(27, 42, 74, 0.06);
-  transition: box-shadow 0.2s ease, transform 0.2s ease;
+.featured-card {
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  padding: 2rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-.home-card:hover {
-  box-shadow: 0 8px 24px rgba(27, 42, 74, 0.1);
+
+.featured-card:hover {
   transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
 }
-.home-card h3 {
+
+.featured-card .badge {
+  display: inline-block;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.badge-interactive {
+  background: #0ea5e9;
+}
+
+.badge-essay {
+  background: #6366f1;
+}
+
+.featured-card h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #000;
+  margin: 0 0 0.75rem 0;
+}
+
+.featured-card p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0 0 1.5rem 0;
+}
+
+.featured-card a {
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 2px solid;
+  padding-bottom: 2px;
+  transition: opacity 0.2s ease;
+}
+
+.featured-card a:hover {
+  opacity: 0.7;
+}
+
+.featured-card.cyan a {
+  color: #0ea5e9;
+  border-color: #0ea5e9;
+}
+
+.featured-card.indigo a {
+  color: #6366f1;
+  border-color: #6366f1;
+}
+
+/* ========== STATS STRIP ========== */
+
+.stats-section {
+  background: #000;
+  color: #fff;
+  padding: 2rem;
+  margin: 2rem 0 3rem 0;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  text-align: center;
+}
+
+.stat-item p:first-child {
+  font-size: 2.5rem;
+  font-weight: 900;
+  margin: 0;
+  color: #0ea5e9;
+}
+
+.stat-item p:last-child {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #999;
+  margin: 0.5rem 0 0 0;
+}
+
+/* ========== SECTION HEADINGS ========== */
+
+.section-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #666;
+  margin: 0 0 1.5rem 0;
+  font-weight: 700;
+}
+
+.section-heading {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #000;
+  margin: 0 0 1rem 0;
+  letter-spacing: -0.02em;
+}
+
+.section-description {
+  font-size: 1rem;
+  color: #666;
+  margin: 0 0 2.5rem 0;
+  line-height: 1.7;
+  max-width: 500px;
+}
+
+/* ========== GRAPHS GRID ========== */
+
+.graphs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin: 0 0 3rem 0;
+}
+
+.graph-card {
+  border-radius: 8px;
+  padding: 2rem;
+  color: #fff;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+
+.graph-card:hover {
+  transform: translateY(-4px);
+}
+
+.graph-card .label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0 0 0.75rem 0;
+  opacity: 0.9;
+}
+
+.graph-card h4 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 0;
+  color: #fff;
+}
+
+.graph-cyan {
+  background: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 100%);
+}
+
+.graph-indigo {
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+}
+
+.graph-pink {
+  background: linear-gradient(135deg, #ec4899 0%, #f43f5e 100%);
+}
+
+.graph-amber {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+}
+
+/* ========== CTA SECTION ========== */
+
+.cta-section {
+  padding: 3rem 0;
+  background: #f3f4f6;
+  border-top: 1px solid #e5e5e5;
+  margin: 3rem 0;
+  text-align: center;
+}
+
+.cta-section h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #000;
+  margin: 0 0 1rem 0;
+}
+
+.cta-section p {
+  font-size: 1rem;
+  color: #666;
+  margin: 0 0 1.5rem 0;
+}
+
+.btn-dark {
+  display: inline-block;
+  background: #000;
+  color: #fff !important;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  text-decoration: none !important;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: background 0.2s ease;
+}
+
+.btn-dark:hover {
+  background: #333;
+}
+
+/* ========== FOOTER ========== */
+
+.footer {
+  padding: 2rem;
+  text-align: center;
+  border-top: 1px solid #e5e5e5;
+  color: #999;
+  font-size: 0.9rem;
   margin-top: 0;
 }
 
-/* Section dividers — subtle, warm, not a harsh black line */
-.content hr {
-  border: none;
-  border-top: 1px solid #ece7da;
-  margin: 3rem 0;
+.footer p {
+  margin: 0;
+  font-size: 0.9rem;
 }
 
-/* Buttons / CTA links, e.g. "View my work" — add class="btn-navy" to a link */
-.btn-navy {
-  display: inline-block;
-  background: #1b2a4a;
-  color: #faf9f6 !important;
-  font-weight: 600;
-  padding: 0.6rem 1.4rem;
-  border-radius: 8px;
-  text-decoration: none !important;
-  margin-top: 1rem;
-  transition: background 0.2s ease;
-}
-.btn-navy:hover {
-  background: #c08a3e;
-}
+/* ========== RESPONSIVE ========== */
 
-/* Pull-quote / intro statement styling */
-.lead-statement {
-  font-size: 1.3rem;
-  font-weight: 500;
-  color: #1b2a4a;
-  line-height: 1.5;
-  margin: 1.5rem 0;
-}
+@media (max-width: 768px) {
+  h1.title {
+    font-size: 2.5rem;
+  }
 
-/* Images on the homepage (headshot, etc.) */
-.content img {
-  border-radius: 10px;
-  box-shadow: 0 4px 16px rgba(27, 42, 74, 0.08);
-}
+  .featured-grid,
+  .graphs-grid {
+    grid-template-columns: 1fr;
+  }
 
-/* Footer consistency */
-.footer {
-  background: #f0ece1;
-  border-top: 1px solid #ece7da;
-  color: #5a5f6b;
-  margin-top: 4rem;
-  padding: 1.5rem 0;
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .section-heading {
+    font-size: 1.5rem;
+  }
 }
