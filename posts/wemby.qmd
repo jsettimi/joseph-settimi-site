@@ -7,7 +7,7 @@ image: ./images/wemby_AG.png
 
 ```{r, include=FALSE}
 source("../scripts/NBA_synergy_copy.R")
-#knitr::opts_knit$set(root.dir = here::here())
+knitr::opts_knit$set(root.dir = here::here())
 library(stringr)
 ```
 

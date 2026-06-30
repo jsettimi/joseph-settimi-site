@@ -1,11 +1,99 @@
 ---
-title: "site"
+title: "Joseph Settimi"
 ---
 
-This is a Quarto website.
+::: {.hero-subtitle}
+Sports writing. Data visualization. R code. Looking for signal in the noise.
+:::
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+## Featured
 
-```{r}
-1 + 1
-```
+::: {.featured-grid}
+
+::: {.featured-card .cyan}
+<span class="badge badge-interactive">Interactive</span>
+
+### Wemby
+
+Shot patterns and offensive flow in the 2026 Finals. With interactive shot charts.
+
+[Read →](posts/wemby.html)
+:::
+
+::: {.featured-card .indigo}
+<span class="badge badge-essay">Essay</span>
+
+### The Dusty May Moratorium
+
+Michigan's championship and what it means for the ghosts of past failures.
+
+[Read →](posts/dusty_may.html)
+:::
+
+:::
+
+::: {.stats-section}
+::: {.stats-grid}
+
+::: {.stat-item}
+**2**
+
+Articles
+:::
+
+::: {.stat-item}
+**∞**
+
+Graphs
+:::
+
+::: {.stat-item}
+**1**
+
+Author
+:::
+
+:::
+:::
+
+<p class="section-label">Interactive</p>
+
+## Graphs & Visualizations
+
+<p class="section-description">R-powered explorations of sports data. Plotly charts, shot maps, and whatever else I'm curious about this week.</p>
+
+::: {.graphs-grid}
+
+::: {.graph-card .graph-cyan}
+<p class="label">Visualization</p>
+#### Shot chart comparison
+:::
+
+::: {.graph-card .graph-indigo}
+<p class="label">Visualization</p>
+#### Team performance trends
+:::
+
+::: {.graph-card .graph-pink}
+<p class="label">Visualization</p>
+#### Statistical deep dives
+:::
+
+::: {.graph-card .graph-amber}
+<p class="label">Visualization</p>
+#### Player comparison tool
+:::
+
+:::
+
+::: {.cta-section}
+### More writing
+
+See all posts, graphs, and data explorations.
+
+[View all →](posts.html){.btn-dark}
+:::
+
+::: {.footer}
+Joseph Settimi © 2026
+:::

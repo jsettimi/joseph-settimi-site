@@ -6,7 +6,7 @@ library(httr)
 library(jsonlite)
 library(patchwork)
 
-filter_play_type <- function(playtype, player_or_team, off_or_def, download = FALSE, permode = 'PerGame', playoff_or_reg = 'Regular Season', season_year = '2025-26') {
+filter_play_type <- function(playtype, player_or_team, off_or_def, download = FALSE, permode = 'PerGame', playoff_or_reg = 'Regular Season', season_year = '2025-26', position = "") {
   # Define the URL and parameters
   url <- "https://stats.nba.com/stats/synergyplaytypes"
   
@@ -19,7 +19,8 @@ filter_play_type <- function(playtype, player_or_team, off_or_def, download = FA
     PlayerOrTeam = player_or_team,
     SeasonType = playoff_or_reg,
     SeasonYear = season_year,
-    TypeGrouping = off_or_def
+    TypeGrouping = off_or_def,
+    PlayerPosition = position 
   )
   
   # Define headers
@@ -626,3 +627,114 @@ make_master_playtype <- function(yr){
   }
   return(master)}  
   
+chart_synergy <- function(playtype,
+                              offense,
+                              pos = NA,
+                              year = '2025-26') {
+  
+  play_types <- c(
+    'Isolation', 'PRRollman', 'Transition', 'PRBallHandler',
+    'Postup', 'Spotup', 'Cut', 'OffScreen',
+    'Handoff', 'OffRebound'
+  )
+  
+  if (!(playtype %in% play_types)) {
+    return(
+      paste(
+        "playtype must be one of:",
+        paste(play_types, collapse = ", ")
+      )
+    )
+  }
+  
+  players <- filter_play_type(
+    playtype = playtype,
+    player_or_team = "P",
+    off_or_def = "offensive",
+    season_year = year
+  )
+  
+  if (!is.na(pos)) {
+    players <- players %>%
+      filter(POSITION == pos)
+  }
+  
+  off <- players %>%
+    filter(TEAM_ABBREVIATION == offense)
+  
+  off_color1 <- tc %>%
+    filter(TEAM_ABBREVIATION == offense) %>%
+    pull(primary)
+  
+  off_color2 <- tc %>%
+    filter(TEAM_ABBREVIATION == offense) %>%
+    pull(secondary)
+  
+  if (offense == 'SAS') {
+    off_color1 <- "black"
+    off_color2 <- "grey70"}
+  
+  if (length(off_color1) == 0) off_color1 <- "black"
+  if (length(off_color2) == 0) off_color2 <- "grey70"
+  
+  tit <- paste0(playtype, ": Usage vs Efficiency")
+  
+  subtit <- paste0(
+    offense,
+    " players highlighted | Via Synergy"
+  )
+  
+  ggplot() +
+    geom_point(
+      data = players,
+      aes(
+        x = POSS_PCT,
+        y = PPP
+      ),
+      color = off_color2,
+      alpha = 0.45,
+      size = 2
+    ) +
+    geom_point(
+      data = off,
+      aes(
+        x = POSS_PCT,
+        y = PPP
+      ),
+      color = off_color1,
+      size = 3
+    ) +
+    ggrepel::geom_text_repel(
+      data = off,
+      aes(
+        x = POSS_PCT,
+        y = PPP,
+        label = PLAYER_NAME
+      ),
+      color = off_color1,
+      fontface = "bold",
+      size = 4,
+      max.overlaps = Inf
+    ) +
+    theme_minimal() +
+    labs(
+      title = tit,
+      subtitle = subtit,
+      x = "Frequency of Possessions (%)",
+      y = "Points Per Possession"
+    ) +
+    theme(
+      plot.title = element_text(face = "bold"),
+      plot.subtitle = element_text(color = "slategray"),
+      axis.title = element_text(face = "bold.italic")
+    ) + geom_vline(
+      xintercept = mean(players$POSS_PCT, na.rm = TRUE),
+      linetype = "dashed",
+      color = "grey50"
+    ) +
+    geom_hline(
+      yintercept = mean(players$PPP, na.rm = TRUE),
+      linetype = "dashed",
+      color = "grey50"
+    )
+}
