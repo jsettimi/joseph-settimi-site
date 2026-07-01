@@ -64,12 +64,10 @@ Author
 
 ::: {.graphs-grid}
 
-[
 ::: {.graph-card .graph-cyan}
 <p class="label">Interactive</p>
-#### Offense vs Defense
+[#### Offense vs Defense](graphs/chart_ovd/index.html)
 :::
-](graphs/chart_ovd/index.html)
 
 ::: {.graph-card .graph-indigo}
 <p class="label">Visualization</p>
