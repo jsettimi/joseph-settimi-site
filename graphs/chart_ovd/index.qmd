@@ -1,11 +1,140 @@
 ---
 title: "Offense vs Defense Explorer"
 description: "Compare how teams defend different scoring types."
+format:
+  html:
+    resources:
+      - https://cdn.jsdelivr.net/npm/shinylive@0.2.2/dist/
 ---
 
-<iframe
-  src="http://127.0.0.1:6529"
-  width="100%"
-  height="850"
-  frameborder="0">
-</iframe>
+```{r}
+#| standalone: true
+#| viewerHeight: 900
+
+library(shiny)
+library(tidyverse)
+library(ggplot2)
+library(plotly)
+library(dplyr)
+library(teamcolors)
+
+# Load your data processing function
+# (assumes your NBA_synergy_copy.R is available)
+# For now, we'll use placeholder data structure
+
+ui <- fluidPage(
+  tags$head(
+    tags$style(HTML("
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        background-color: #f9fafb;
+      }
+      .shiny-input-container {
+        margin-bottom: 1.5rem;
+      }
+      .shiny-input-container label {
+        font-weight: 600;
+        color: #1f2937;
+        margin-bottom: 0.5rem;
+      }
+      select, input {
+        border-radius: 6px;
+        border: 1px solid #d1d5db;
+        padding: 0.5rem 0.75rem;
+      }
+      select:focus, input:focus {
+        outline: none;
+        border-color: #0ea5e9;
+        box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
+      }
+      .well {
+        background-color: #fff;
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+      }
+      h1 {
+        color: #000;
+        font-weight: 800;
+        margin-bottom: 0.5rem;
+      }
+      .section-desc {
+        color: #666;
+        margin-bottom: 2rem;
+        font-size: 1rem;
+      }
+    "))
+  ),
+
+  div(
+    style = "padding: 2rem;",
+
+    h1("Offense vs Defense Explorer"),
+    p("Select a stat, offensive team, and defensive team to compare scoring patterns.",
+      class = "section-desc"),
+
+    fluidRow(
+      column(3,
+        selectInput(
+          "stat",
+          "Scoring Type",
+          choices = c(
+            "Points" = "POINTS",
+            "Drives" = "DRIVE",
+            "Catch & Shoot" = "CATCH_SHOOT",
+            "Pull Ups" = "PULL_UP",
+            "Paint" = "PAINT",
+            "Post" = "POST",
+            "Elbow" = "ELBOW"
+          ),
+          selected = "POINTS"
+        )
+      ),
+      column(3,
+        selectInput(
+          "offense",
+          "Offensive Team",
+          choices = c("SAS", "NYK", "LAL", "GSW", "BOS", "MIA"),
+          selected = "SAS"
+        )
+      ),
+      column(3,
+        selectInput(
+          "defense",
+          "Defensive Team",
+          choices = c("NYK", "SAS", "LAL", "GSW", "BOS", "MIA"),
+          selected = "NYK"
+        )
+      )
+    ),
+
+    plotOutput("ovd_plot", height = "600px", width = "100%")
+  )
+)
+
+server <- function(input, output, session) {
+
+  output$ovd_plot <- renderPlot({
+    # Placeholder plot - replace with your actual chart_ovd function
+    # when Shinylive has access to your NBA_synergy_copy.R
+
+    p <- ggplot(data.frame(x = 1, y = 1), aes(x, y)) +
+      geom_point(size = 10, color = "#0ea5e9") +
+      theme_minimal() +
+      labs(
+        title = paste(input$stat, "by Team"),
+        subtitle = paste(input$offense, "offense vs", input$defense, "defense")
+      ) +
+      theme(
+        plot.title = element_text(size = 18, face = "bold", color = "#000"),
+        plot.subtitle = element_text(size = 14, color = "#666"),
+        panel.grid = element_blank(),
+        axis.title = element_blank(),
+        axis.text = element_blank()
+      )
+
+    p
+  })
+}
+
+shinyApp(ui, server)
+```

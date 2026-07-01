@@ -64,24 +64,26 @@ Author
 
 ::: {.graphs-grid}
 
+[
 ::: {.graph-card .graph-cyan}
+<p class="label">Interactive</p>
+#### Offense vs Defense
+:::
+](graphs/chart_ovd/index.html)
+
+::: {.graph-card .graph-indigo}
 <p class="label">Visualization</p>
 #### Shot chart comparison
 :::
 
-::: {.graph-card .graph-indigo}
-<p class="label">Visualization</p>
-#### Team performance trends
-:::
-
 ::: {.graph-card .graph-pink}
 <p class="label">Visualization</p>
-#### Statistical deep dives
+#### Player comparison tool
 :::
 
 ::: {.graph-card .graph-amber}
 <p class="label">Visualization</p>
-#### Player comparison tool
+#### Statistical deep dives
 :::
 
 :::

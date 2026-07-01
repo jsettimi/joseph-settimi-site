@@ -100,10 +100,21 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link" href="./posts.html"> 
 <span class="menu-text">Posts</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./graphs.html"> 
-<span class="menu-text">Graphs</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-graphs" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Graphs</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-graphs">    
+        <li>
+    <a class="dropdown-item" href="./graphs.html">
+ <span class="dropdown-text">All graphs</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="./graphs/chart_ovd/index.html">
+ <span class="dropdown-text">OVD Explorer</span></a>
+  </li>  
+    </ul>
+  </li>
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -187,7 +198,16 @@ Interactive
 R-powered explorations of sports data. Plotly charts, shot maps, and whatever else I’m curious about this week.
 </p>
 <div class="graphs-grid">
-<div class="graph-card graph-cyan">
+[ ::: {.graph-card .graph-cyan}
+<p class="label">
+Interactive
+</p>
+<section id="offense-vs-defense" class="level4">
+<h4 class="anchored" data-anchor-id="offense-vs-defense">Offense vs Defense</h4>
+</section>
+</div>
+<p>](graphs/chart_ovd/index.html)</p>
+<div class="graph-card graph-indigo">
 <p class="label">
 Visualization
 </p>
@@ -195,23 +215,7 @@ Visualization
 <h4 class="anchored" data-anchor-id="shot-chart-comparison">Shot chart comparison</h4>
 </section>
 </div>
-<div class="graph-card graph-indigo">
-<p class="label">
-Visualization
-</p>
-<section id="team-performance-trends" class="level4">
-<h4 class="anchored" data-anchor-id="team-performance-trends">Team performance trends</h4>
-</section>
-</div>
 <div class="graph-card graph-pink">
-<p class="label">
-Visualization
-</p>
-<section id="statistical-deep-dives" class="level4">
-<h4 class="anchored" data-anchor-id="statistical-deep-dives">Statistical deep dives</h4>
-</section>
-</div>
-<div class="graph-card graph-amber">
 <p class="label">
 Visualization
 </p>
@@ -219,7 +223,15 @@ Visualization
 <h4 class="anchored" data-anchor-id="player-comparison-tool">Player comparison tool</h4>
 </section>
 </div>
+<div class="graph-card graph-amber">
+<p class="label">
+Visualization
+</p>
+<section id="statistical-deep-dives" class="level4">
+<h4 class="anchored" data-anchor-id="statistical-deep-dives">Statistical deep dives</h4>
+</section>
 </div>
+<p>:::</p>
 <section id="more-writing" class="level3 cta-section">
 <h3 class="anchored" data-anchor-id="more-writing">More writing</h3>
 <p>See all posts, graphs, and data explorations.</p>

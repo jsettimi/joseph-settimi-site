@@ -9,8 +9,12 @@ website:
         text: Home
       - href: posts.qmd
         text: Posts
-      - href: graphs.qmd
-        text: Graphs
+      - text: Graphs
+        menu:
+          - href: graphs.qmd
+            text: All graphs
+          - href: graphs/chart_ovd/index.html
+            text: OVD Explorer
 
 format:
   html:
