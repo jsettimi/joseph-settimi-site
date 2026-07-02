@@ -8,6 +8,7 @@
   {
     "listing": "/posts.html",
     "items": [
+      "/posts/test.html",
       "/posts/dusty_may.html",
       "/posts/wemby.html"
     ]

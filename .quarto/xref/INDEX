@@ -19,5 +19,11 @@
   },
   "graphs.qmd": {
     "graphs.html": "45352224"
+  },
+  "test.qmd": {
+    "test.html": "e74d695e"
+  },
+  "posts/test.qmd": {
+    "test.html": "a9b92fb3"
   }
 }
