@@ -5,3 +5,20 @@ listing:
   sort: "date desc"
   type: default
 ---
+
+# Longform Essays
+
+<div class="home-card">
+
+## Dusty May
+
+A look at how Dusty May built one of the most interesting programs in college basketball.
+
+[Read article](/essays/dusty_may.html)
+
+</div>
+
+# Technical Posts
+
+```{=html}
+{{< listing posts >}}

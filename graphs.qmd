@@ -9,3 +9,10 @@ listing:
 ---
 Explore NBA visualizations and tools built from really really unique NBA data.
 
+
+```{r}
+plot_player_shots('Normal Powell', opposing_team = 'Heat', target_team = 'Bulls', game_year = 2025, 401705482)
+```
+
+
+

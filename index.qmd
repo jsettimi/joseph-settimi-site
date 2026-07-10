@@ -6,28 +6,35 @@ title: "Joseph Settimi"
 Sports writing. Data visualization. R code. Looking for signal in the noise.
 :::
 
-## Featured
+<input type="text" class="search-bar" placeholder="Search articles...">
+
+<div style="display: flex; gap: 0.75rem; margin-bottom: 2.5rem; flex-wrap: wrap;">
+<button class="filter-btn active">All</button>
+<button class="filter-btn">Interactive</button>
+<button class="filter-btn">Essay</button>
+<button class="filter-btn">Analysis</button>
+</div>
+
+<p class="section-label">Featured</p>
 
 ::: {.featured-grid}
 
-::: {.featured-card .cyan}
-<span class="badge badge-interactive">Interactive</span>
-
+::: {.featured-card}
+<div class="featured-card-cover">📊</div>
+<div class="featured-card-content">
+<div class="tag tag-interactive">Interactive</div>
 ### Wemby
-
-Shot patterns and offensive flow in the 2026 Finals. With interactive shot charts.
-
-[Read →](posts/wemby.html)
+Shot patterns and offensive flow in the Finals.
+</div>
 :::
 
-::: {.featured-card .indigo}
-<span class="badge badge-essay">Essay</span>
-
+::: {.featured-card}
+<div class="featured-card-cover">✍️</div>
+<div class="featured-card-content">
+<div class="tag tag-essay">Essay</div>
 ### The Dusty May Moratorium
-
-Michigan's championship and what it means for the ghosts of past failures.
-
-[Read →](posts/dusty_may.html)
+Championship ghosts and unfinished business.
+</div>
 :::
 
 :::
@@ -60,28 +67,28 @@ Author
 
 ## Graphs & Visualizations
 
-<p class="section-description">R-powered explorations of sports data. Plotly charts, shot maps, and whatever else I'm curious about this week.</p>
+<p class="section-description">R-powered explorations of sports data.</p>
 
 ::: {.graphs-grid}
 
-::: {.graph-card .graph-cyan}
+::: {.graph-card}
 <p class="label">Interactive</p>
-[#### Offense vs Defense](graphs/chart_ovd/index.html)
+#### OVD Explorer
 :::
 
-::: {.graph-card .graph-indigo}
+::: {.graph-card}
 <p class="label">Visualization</p>
 #### Shot chart comparison
 :::
 
-::: {.graph-card .graph-pink}
-<p class="label">Visualization</p>
-#### Player comparison tool
+::: {.graph-card}
+<p class="label">Analysis</p>
+#### Deep dives
 :::
 
-::: {.graph-card .graph-amber}
-<p class="label">Visualization</p>
-#### Statistical deep dives
+::: {.graph-card}
+<p class="label">Exploration</p>
+#### Player trends
 :::
 
 :::
