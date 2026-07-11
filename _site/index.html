@@ -152,24 +152,52 @@ ul.task-list li input[type="checkbox"] {
 <div class="hero-subtitle">
 <p>Sports writing. Data visualization. R code. Looking for signal in the noise.</p>
 </div>
-<section id="featured" class="level2">
-<h2 class="anchored" data-anchor-id="featured">Featured</h2>
+<p><input type="text" class="search-bar" placeholder="Search articles..."></p>
+<div style="display: flex; gap: 0.75rem; margin-bottom: 2.5rem; flex-wrap: wrap;">
+<button class="filter-btn active">
+All
+</button>
+<button class="filter-btn">
+Interactive
+</button>
+<button class="filter-btn">
+Essay
+</button>
+<button class="filter-btn">
+Analysis
+</button>
+</div>
+<p class="section-label">
+Featured
+</p>
 <div class="featured-grid">
-<div class="featured-card cyan">
-<p><span class="badge badge-interactive">Interactive</span></p>
+<div class="featured-card">
+<div class="featured-card-cover">
+📊
+</div>
+<div class="featured-card-content">
+<div class="tag tag-interactive">
+Interactive
+</div>
 <section id="wemby" class="level3">
 <h3 class="anchored" data-anchor-id="wemby">Wemby</h3>
-<p>Shot patterns and offensive flow in the 2026 Finals. With interactive shot charts.</p>
-<p><a href="posts/wemby.html">Read →</a></p>
+<p>Shot patterns and offensive flow in the Finals.</p>
 </section>
 </div>
-<div class="featured-card indigo">
-<p><span class="badge badge-essay">Essay</span></p>
+</div>
+<div class="featured-card">
+<div class="featured-card-cover">
+✍️
+</div>
+<div class="featured-card-content">
+<div class="tag tag-essay">
+Essay
+</div>
 <section id="the-dusty-may-moratorium" class="level3">
 <h3 class="anchored" data-anchor-id="the-dusty-may-moratorium">The Dusty May Moratorium</h3>
-<p>Michigan’s championship and what it means for the ghosts of past failures.</p>
-<p><a href="posts/dusty_may.html">Read →</a></p>
+<p>Championship ghosts and unfinished business.</p>
 </section>
+</div>
 </div>
 </div>
 <div class="stats-section">
@@ -191,20 +219,21 @@ ul.task-list li input[type="checkbox"] {
 <p class="section-label">
 Interactive
 </p>
-</section>
 <section id="graphs-visualizations" class="level2">
 <h2 class="anchored" data-anchor-id="graphs-visualizations">Graphs &amp; Visualizations</h2>
 <p class="section-description">
-R-powered explorations of sports data. Plotly charts, shot maps, and whatever else I’m curious about this week.
+R-powered explorations of sports data.
 </p>
 <div class="graphs-grid">
-<div class="graph-card graph-cyan">
+<div class="graph-card">
 <p class="label">
 Interactive
 </p>
-<p><a href="graphs/chart_ovd/index.html">#### Offense vs Defense</a></p>
+<section id="ovd-explorer" class="level4">
+<h4 class="anchored" data-anchor-id="ovd-explorer">OVD Explorer</h4>
+</section>
 </div>
-<div class="graph-card graph-indigo">
+<div class="graph-card">
 <p class="label">
 Visualization
 </p>
@@ -212,20 +241,20 @@ Visualization
 <h4 class="anchored" data-anchor-id="shot-chart-comparison">Shot chart comparison</h4>
 </section>
 </div>
-<div class="graph-card graph-pink">
+<div class="graph-card">
 <p class="label">
-Visualization
+Analysis
 </p>
-<section id="player-comparison-tool" class="level4">
-<h4 class="anchored" data-anchor-id="player-comparison-tool">Player comparison tool</h4>
+<section id="deep-dives" class="level4">
+<h4 class="anchored" data-anchor-id="deep-dives">Deep dives</h4>
 </section>
 </div>
-<div class="graph-card graph-amber">
+<div class="graph-card">
 <p class="label">
-Visualization
+Exploration
 </p>
-<section id="statistical-deep-dives" class="level4">
-<h4 class="anchored" data-anchor-id="statistical-deep-dives">Statistical deep dives</h4>
+<section id="player-trends" class="level4">
+<h4 class="anchored" data-anchor-id="player-trends">Player trends</h4>
 </section>
 </div>
 </div>
